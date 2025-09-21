@@ -7,6 +7,17 @@
   <link rel="stylesheet" href="Style.css">
   <style>
     .cookie-banner {
+      position: fixed;<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wiesbaden-RP | Startseite</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+
+  <style>
+    .cookie-banner {
       position: fixed;
       bottom: 0;
       left: 0;
@@ -45,6 +56,32 @@
     .cookie-banner a {
       color: #ffd700;
       text-decoration: underline;
+    }
+    .footer-btn {
+      display: inline-block;
+      background: #ff6600;
+      color: #fff;
+      padding: 5px 15px;
+      margin-left: 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .footer-btn:hover {
+      background: #e65c00;
+      transform: translateY(-2px);
+    }
+
+    footer p {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding: 20px 0;
+    }
+
+    footer .lenny {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -105,8 +142,8 @@
   <footer>
     <p>
       © 2025 Wiesbaden-RP | Made by <span class="lenny">Lenny</span> | 
-      <a href="impressum.html">Impressum</a> | 
-      <a href="Datenschutz.html">Datenschutz</a>
+      <a href="impressum.html" class="footer-btn">Impressum</a> 
+      <a href="Datenschutz.html" class="footer-btn">Datenschutz</a>
     </p>
   </footer>
   <div id="cookie-banner" class="cookie-banner">
@@ -125,11 +162,4 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
