@@ -3,30 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emergency Wiesbaden | Startseite</title>
+  <title>Wiesbaden-RP | Startseite</title>
   <link rel="stylesheet" href="Style.css">
+  <style>
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
+
+    .cookie-banner p {
+      margin: 0;
+      padding-right: 10px;
+    }
+
+    .cookie-banner button {
+      background: #ff6600;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+
+    .cookie-banner button:hover {
+      background: #e65c00;
+    }
+
+    .cookie-banner a {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <header class="navbar">
     <div class="logo">
       <img src="assets/logo.webp" alt="Wiesbaden-RP Logo">
-      <span>Emergency Wiesbaden</span>
+      <span>Wiesbaden-RP</span>
     </div>
     <nav>
       <a href="index.html" class="active">Start</a>
       <a href="bewerbung.html">Bewerbungen</a>
       <a href="regelwerk.html">Regelwerk</a>
       <a href="forum.html">Forum</a>
-      <a href="https://discord.gg/m9WrFk2DKS" target="_blank" class="discord-btn">Discord Link </a>
+      <a href="https://discord.gg/m9WrFk2DKS" target="_blank" class="discord-btn">Discord</a>
     </nav>
   </header>
+
   <section class="hero animated-bg">
     <div class="hero-content">
-      <h1 class="hero-title">Willkommen bei <span>Emergency Wiesbaden</span></h1>
+      <h1 class="hero-title">Willkommen bei <span>Wiesbaden-RP</span></h1>
       <p class="hero-sub">Der modernste Roblox Roleplay Server inspiriert von der Stadt Wiesbaden.</p>
       <a href="bewerbung.html" class="btn">Jetzt Bewerben</a>
     </div>
   </section>
+
   <main class="container">
     <section class="card slide-up">
       <h2>🌆 Realistisches RP</h2>
@@ -41,6 +85,7 @@
       <p>Werde Teil des Teams – als Moderator, Tester oder Developer.</p>
     </section>
   </main>
+
   <section class="container team-section">
     <h2 class="section-title">👥 Unser Team</h2>
     <div class="team-grid">
@@ -54,18 +99,33 @@
         <img src="assets/EW_GFX_RS6.webp" alt="Anna Beispiel" class="team-img">
         <p class="role">Owner At EW</p>
       </div>
-  <div class="team-card slide-up">
-        <h3>Amo</h3>
-        <img src="assets/HI.webp" alt="Amo" class="team-img">
-        <p class="role">Einfach Amo</p>
-      </div>
     </div>
   </section>
+
   <footer>
-    <p>© 2025 Wiesbaden-RP | Made by <span class="lenny">Lenny</span></p>
+    <p>
+      © 2025 Wiesbaden-RP | Made by <span class="lenny">Lenny</span> | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="Datenschutz.html">Datenschutz</a>
+    </p>
   </footer>
+  <div id="cookie-banner" class="cookie-banner">
+    <p>Wir verwenden Cookies, um die Nutzung unserer Website zu verbessern. Durch die Nutzung unserer Website stimmst du unserer <a href="Datenschutz.html">Datenschutzerklärung</a> zu.</p>
+    <button id="accept-cookies">Akzeptieren</button>
+  </div>
+
+  <script>
+    if (!localStorage.getItem('cookiesAccepted')) {
+      document.getElementById('cookie-banner').style.display = 'flex';
+    }
+    document.getElementById('accept-cookies').addEventListener('click', function() {
+      localStorage.setItem('cookiesAccepted', 'true');
+      document.getElementById('cookie-banner').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
+
 
 
 
