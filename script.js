@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  
   const accordions = document.querySelectorAll(".accordion-btn");
   accordions.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -8,12 +9,36 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!isActive) item.classList.add("active");
     });
   });
+
   const form = document.getElementById("applicationForm");
   if (!form) return;
 
   const roleSelect = document.getElementById("role");
   const devUpload = document.getElementById("devUpload");
   const statusMessage = document.getElementById("statusMessage");
+
+  const roles = {
+    Moderator: true,
+    Tester: true,
+    Developer: false
+  };
+
+ 
+  for (const [role, isOpen] of Object.entries(roles)) {
+    const option = document.createElement("option");
+    option.value = role;
+
+    if (isOpen) {
+      option.textContent = role;
+    } else {
+      option.textContent = `${role} (geschlossen)`;
+      option.disabled = true;
+    }
+
+    roleSelect.appendChild(option);
+  }
+
+
   roleSelect.addEventListener("change", () => {
     if (roleSelect.value === "Developer") {
       devUpload.classList.add("active");
@@ -21,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       devUpload.classList.remove("active");
     }
   });
+
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -32,11 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const role = roleSelect.value;
     const reason = document.getElementById("reason").value;
     const files = document.getElementById("files")?.files;
+
     const embed = {
       title: "📩 Neue Bewerbung",
       description: `Eine neue Bewerbung wurde eingereicht!`,
-      color: 0xFF7F50, 
-      thumbnail: { url: "https://media.discordapp.net/attachments/1417547945041203210/1417555148875628554/698ba9caf301ae314abf8c0a9603b493tplv-tiktokx-cropcenter_720_720.webp?ex=68cd8b9c&is=68cc3a1c&hm=0efac6e60cbe07adcdbfb4c6f54be646263c38b026e78e17eb2f80c5dbb81c9f&=&format=webp&width=160&height=160" }, // öffentliche URL hier einfügen
+      color: 0xFF7F50,
+      thumbnail: {
+        url: "https://media.discordapp.net/attachments/1417547945041203210/1417555148875628554/698ba9caf301ae314abf8c0a9603b493tplv-tiktokx-cropcenter_720_720.webp?ex=68cd8b9c&is=68cc3a1c&hm=0efac6e60cbe07adcdbfb4c6f54be646263c38b026e78e17eb2f80c5dbb81c9f&=&format=webp&width=160&height=160"
+      },
       fields: [
         { name: "Rolle", value: role, inline: true },
         { name: "Roblox Name", value: username, inline: true },
@@ -47,10 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
       footer: { text: "Wiesbaden-RP Bewerbungen" },
       timestamp: new Date().toISOString()
     };
+
     if (files && files.length > 0) {
       const fileList = Array.from(files).map(f => `📎 ${f.name}`).join("\n");
       embed.fields.push({ name: "Dateien", value: fileList });
     }
+
     const formData = new FormData();
     formData.append("payload_json", JSON.stringify({
       content: "@here",
@@ -62,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("files[]", file, file.name);
       });
     }
+
     try {
       await fetch(webhookURL, {
         method: "POST",
@@ -78,4 +111,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
