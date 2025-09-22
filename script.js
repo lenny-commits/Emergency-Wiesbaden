@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const webhookURL = "https://discord.com/api/webhooks/1415457793166671942/rvLOam7etOkCIODJSZg5iFdIFfmsfrqLH_ikB0DsDSURBCwh66M-6d5_09eiKXg9BIo5";
+    const webhookURL = "https://discord.com/api/webhooks/1419659299109736489/Uc7vbxJkSCKMkL_CQVRHxukj2K5AtNZmzpH2L8vEFsnHGKZAxGKWfmt4MFp8kzWKn0MI";
 
     const username = document.getElementById("username").value;
     const discord = document.getElementById("discord").value;
@@ -111,3 +111,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
